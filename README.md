@@ -1,9 +1,14 @@
 
+
 <div align="center">
-  <img src="https://www.gstatic.com/images/icons/material/system/2x/sheets_googlegreen_48dp.png" width="64" alt="Google Sheets Logo" />
+  <img src="docs/sheets-logo.png" width="64" alt="Google Sheets Logo" />
   <h1>google-sheets-automation</h1>
   <p>Automate Google Sheets from Node.js: add, update, and read rows with a simple API.</p>
 </div>
+
+<p align="center" style="font-size:smaller;">
+  <em>Google Sheets and the Google Sheets logo are trademarks of Google LLC. This project is not affiliated with or endorsed by Google.</em>
+</p>
 
 ---
 
@@ -31,10 +36,8 @@ npm install google-sheets-automation
 import { GoogleSheetProvider } from 'google-sheets-automation';
 
 const provider = new GoogleSheetProvider({
-  serviceAccount: {
-    client_email: 'your-service-account-email@project.iam.gserviceaccount.com',
-    private_key: '-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n',
-  },
+  client_email: 'your-service-account-email@project.iam.gserviceaccount.com',
+  private_key: '-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n',
   sheetId: 'your-google-sheet-id',
 });
 
@@ -52,6 +55,42 @@ const rows = [
 await provider.addRows({ spreadsheetId: 'your-google-sheet-id', sheetName: 'Sheet1', headerMap }, rows);
 ```
 
+# React/NextJS Serverside form example
+
+```js
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { GoogleSheetProvider } from 'google-sheets-automation';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') return res.status(405).end();
+
+  const { name, email, message } = req.body;
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  const credentials = {
+    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+  };
+
+  const client = new GoogleSheetProvider(credentials);
+
+  const options = {
+    spreadsheetId: process.env.GOOGLE_SHEET_ID,
+    sheetName: 'Sheet1',
+    headerMap: { name: 'Name', email: 'Email', message: 'Message' }
+  };
+  const rows = [{ name, email, message }];
+
+  try {
+    await client.addRows(options, rows);
+    res.status(200).json({ success: true });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+}
+```
 ## Environment Setup
 
 1. **Create a Google Cloud project** and enable the Google Sheets API.
