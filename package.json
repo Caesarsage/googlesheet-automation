@@ -1,6 +1,6 @@
 {
   "name": "google-sheets-automation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Automate Google Sheets from Node.js: add, update, and read rows with simple API. Supports service accounts, header mapping, and batch operations.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -25,11 +25,23 @@
     "spreadsheet",
     "api",
     "automation",
-     "nodejs",
+    "nodejs",
     "provider"
   ],
-  "author": "CaesarSage",
+  "author": {
+    "name": "Caesar Sage",
+    "email": "caesarsage@gmail.com",
+    "url": "https://github.com/CaesarSage"
+  },
   "license": "MIT",
+  "homepage": "https://github.com/CaesarSage/google-sheets-automation#readme",
+  "bugs": {
+    "url": "https://github.com/CaesarSage/google-sheets-automation/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/CaesarSage"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CaesarSage/google-sheets-automation.git"
@@ -37,17 +49,12 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^25.0.9",
-    "@types/react": "^19.2.9",
-    "@types/react-dom": "^19.2.3",
     "dotenv": "^17.2.3",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.6",
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "google-auth-library": "^10.5.0",
-    "next": "^16.1.4",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "google-auth-library": "^10.5.0"
   }
 }

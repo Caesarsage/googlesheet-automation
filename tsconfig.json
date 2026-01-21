@@ -4,6 +4,7 @@
     "module": "ESNext",
     "declaration": true,
     "outDir": "dist",
+    "rootDir": "src",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -11,5 +12,5 @@
     "skipLibCheck": true,
     "types": ["node", "jest"]
   },
-  "include": ["src", "test"]
+  "include": ["src"]
 }
