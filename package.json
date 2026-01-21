@@ -1,6 +1,6 @@
 {
   "name": "google-sheets-automation",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Automate Google Sheets from Node.js: add, update, and read rows with simple API. Supports service accounts, header mapping, and batch operations.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
