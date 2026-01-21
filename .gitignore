@@ -1,0 +1,24 @@
+# Node
+node_modules/
+dist/
+.env
+.env.local
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Test
+coverage/
+
+# OS
+Thumbs.db
+
+# Misc
+*.log
+*.tgz
+
+# TypeScript
+*.tsbuildinfo
